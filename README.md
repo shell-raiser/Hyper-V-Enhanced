@@ -4,3 +4,5 @@ WIP Project
 trying to optimize Hyper-V VMs to be as flexible as WSL, with additional benefits
 ---
 Add disadvantages of WSL2
+---
+Explore VSCode integration with Hyper-V VM
