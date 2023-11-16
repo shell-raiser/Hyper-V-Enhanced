@@ -17,7 +17,7 @@ do {
 	start-sleep -s 3
 
 	# extract the IP address and store it in a user environment variable
-	$output = get-vm -Name kali-linux | select -ExpandProperty networkadapters | select ipaddresses
+	$output = get-vm -Name kali-linux | Select-Object -ExpandProperty networkadapters | Select-Object ipaddresses
 	$output = $output.IPAddresses[0]
 } until ($null -ne $output)
 
