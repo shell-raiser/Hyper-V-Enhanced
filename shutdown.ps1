@@ -11,3 +11,6 @@ Stop-VM -Name kali-linux
 
 # Kill Xming, in this case vcxrv
 Get-process vcxsrv | Stop-Process
+
+# remove the user env var
+[System.Environment]::SetEnvironmentVariable('KaliHyperVAddr',"",[System.EnvironmentVariableTarget]::User)
