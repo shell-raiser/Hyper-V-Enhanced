@@ -9,8 +9,10 @@ if ($testadmin -eq $false) {
 # start VM
 Start-VM kali-linux
 
-# Start Xming
-& 'C:\Program Files\VcXsrv\vcxsrv.exe' -multiwindow -dpi 150
+# Start Vcxsrv with Vsock
+& 'C:\Program Files\VcXsrv\vcxsrv.exe' :0 -vmid '{0c67e76b-97dd-43e4-8e2b-3bc633c465e4}' -vsockport 6000 -multiwindow -dpi 150
+# use socat for port forwarding on the vm
+# socat -b65536 UNIX-LISTEN:/tmp/.X11-unix/X0,fork,mode=777 vsock-connect:2:6000 &; export DISPLAY=:0.0
 
 # wait for bootup
 do {

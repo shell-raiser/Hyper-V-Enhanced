@@ -9,7 +9,7 @@ Write-Output "set-Alias -Name hpe -Value $INSTALLLOC\hpe.ps1" >> $PROFILE
 # $env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState
 # Define the new profile
 $newProfile = @{
-    "commandline" = "powershell.exe -command `"ssh -Y username@`$env:KaliHyperVAddr`""
+    "commandline" = "powershell.exe -command `"ssh username@`$env:KaliHyperVAddr`""
     "elevate" = $false
     "hidden" = $false
     "name" = "Kali"
