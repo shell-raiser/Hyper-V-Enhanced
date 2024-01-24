@@ -10,7 +10,7 @@ if ($args[0] -eq '--shutdown') {
 }
 elseif ($args.Length -eq 0) {
     # check if vm already booted
-    if ($null -eq [System.Environment]::GetEnvironmentVariable('KaliHyperVAddr', 'User')) {
+    if (($null -eq [System.Environment]::GetEnvironmentVariable('KaliHyperVAddr', 'User')) -and (Get-VM -Name kali-linux | Select-Object -ExpandProperty State) -eq 'Off' ) {
         & $PSScriptRoot\startUp.ps1
         # block terminal until operation is completed fully
         do {
@@ -18,7 +18,7 @@ elseif ($args.Length -eq 0) {
         } until (
             $null -ne [System.Environment]::GetEnvironmentVariable('KaliHyperVAddr', 'User')
         )
-    }   
+    }
     # ssh into machine
     $ip = [System.Environment]::GetEnvironmentVariable('KaliHyperVAddr', 'User')
     ssh kss@$ip
